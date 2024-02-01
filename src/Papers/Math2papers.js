@@ -12,6 +12,7 @@ import Loader from "../Components/Loader.js";
 import { sleep, topFunction } from "../Global.js";
 import StaticTag from "../Components/StaticTag.js";
 import LoginComponent from "../Components/LoginComponent.js";
+import { Helmet } from 'react-helmet';
 
 function Math2Papers() {
 
@@ -127,6 +128,17 @@ function Math2Papers() {
 
   return (
     <div className="relative z-0">
+    <Helmet>
+        <title>Discover English Medium, Marathi Medium, and Sem-English Medium Maharashtra 10th SSC Board History Question Paper for 2018,2019,2020,2022,2023.</title>
+        <meta name="description" content="Prepare for your exam with our history question paper for the Maharashtra 10th SSC board. Prepare with the best resources and boost your chances of success in Maharashtra 10th SSC boards by practicing the previous year's question papers for 2018,2019,2020,2022,2023." />
+        <meta name="keywords" content="10th SSC Maharashtra board question papers" />
+        <meta name="keywords" content="Last 5 years question papers" />
+        <meta name="keywords" content="Class 10 th Maharashtra board Mathematics 2 question paper and Solutions." />
+        <meta name="keywords" content="Question paper pdf." />
+        <meta name="keywords" content="10th Standard Board exam." />
+        <meta name="keywords" content="Maharashtra Board questions paper all classes." />
+        <meta name="keywords" content="Maharashtra Board Question and Solutions." />
+      </Helmet>
       <div>
         <div className="sticky flex top-0 z-10">
           <Navbar />
