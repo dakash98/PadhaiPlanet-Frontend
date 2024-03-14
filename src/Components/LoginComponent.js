@@ -9,7 +9,7 @@ function LoginComponent() {
   const [screenWidth, setScreenWidth] = useState(window.innerWidth);
   const [name, setName] = useState("");
   const [signinname, signinName] = useState("");
-  const [phoneNumber, setPhoneNumber] = useState("");
+  const [phoneNumber, setPhoneNumber] = useState("91");
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [password1, setSignInPassword] = useState("");
@@ -44,10 +44,10 @@ function LoginComponent() {
 
   const handlePhoneNumberChange = (event) => {
     let numericValue = event.target.value.replace(/[^0-9]/g, "");
-    // numericValue = numericValue.slice(0, 12);
-    // if (!numericValue.startsWith("91")) {
-    //   numericValue = `91${numericValue}`;
-    // }
+    numericValue = numericValue.slice(0, 12);
+    if (!numericValue.startsWith("91")) {
+      numericValue = `91${numericValue}`;
+    }
     setPhoneNumber(numericValue);
   };
 
@@ -93,28 +93,29 @@ function LoginComponent() {
 
   const submitHandlerSignUp = (event) => {
     event.preventDefault();
+    if (!phoneNumber || phoneNumber.length !== 12) {
+      console.log("Invalid phone number");
+      return;
+    }
     // document.getElementById("forms_window").classList.add("hidden");
     const roleValues = {
       student: 1,
       parent: 2,
       teacher: 3,
     };
-    let userPhnNumber = phoneNumber;
-    let userPass = password;
-    let userRole = roleValues[role];
-
-    if (userPhnNumber.length > 10 || !isValidEmail(email)) {
-      console.log("There is some issue with the Phone or Email.")
-      return 
-    }    
+    const userName = name;
+    const userPhnNumber = phoneNumber;
+    const userEmail = email;
+    const userPass = password;
+    const userRole = roleValues[role];
 
     axios.defaults.withCredentials = true;
 
     axios
-      .post("https://padhaiplanet.com/api/v1/signup", {
-        name: name,
-        email: email,
-        phone: `91${userPhnNumber}`,
+      .post("http://padhaiplanet.com/api/v1/signup", {
+        name: userName,
+        email: userEmail,
+        phone: userPhnNumber,
         password: userPass,
         role: userRole,
       })
@@ -144,13 +145,13 @@ function LoginComponent() {
     const userPass = password1;
     if (!isNaN(userPhnNumber)) {
 
-      if(userPhnNumber.length === 10){
+      if (userPhnNumber.length === 10) {
         userPhnNumber = `91${userPhnNumber}`;
       }
-      else if(userPhnNumber.length === 12) {
+      else if (userPhnNumber.length === 12) {
         userPhnNumber = `${userPhnNumber}`
       }
-      else{
+      else {
         userPhnNumber = "";
       }
       console.log(userPhnNumber.length);
@@ -159,7 +160,7 @@ function LoginComponent() {
     axios.defaults.withCredentials = true;
 
     axios
-      .post("https://padhaiplanet.com/api/v1/login", {
+      .post("http://padhaiplanet.com/api/v1/login", {
         email_or_phone: userPhnNumber,
         password: userPass,
       })
@@ -243,7 +244,7 @@ function LoginComponent() {
                     <input
                       type="text"
                       name="uname"
-                      className=" text-4sm text-gray-900 w-full h-[50px] p-4 rounded-lg border-2 border-gray-300 outline-none focus:outline-none focus:border-blue-500 transition-all duration-200 relative z-10 sm:mr-4"
+                      className=" text-4sm text-gray-900 w-full h-[50px] p-4 rounded-lg border-2 border-gray-300 outline-none focus:outline-none focus:border-blue-500 transition-all duration-200 relative z-1 sm:mr-4"
                       placeholder=""
                       value={name}
                       onChange={handleInputChange}
@@ -259,10 +260,9 @@ function LoginComponent() {
                     <input
                       type="text"
                       name="phone"
-                      className="text-4sm text-gray-900 w-full h-[50px] p-4 rounded-lg border-2 border-gray-300 outline-none focus:outline-none focus:border-blue-500 transition-all duration-200 relative z-10"
+                      className="text-4sm text-gray-900 w-full h-[50px] p-4 rounded-lg border-2 border-gray-300 outline-none focus:outline-none focus:border-blue-500 transition-all duration-200 relative z-1"
                       placeholder=""
                       minlength="10"
-                      maxLength="10"
                       value={phoneNumber}
                       onChange={handlePhoneNumberChange}
                       required
@@ -277,7 +277,7 @@ function LoginComponent() {
                     <input
                       type="text"
                       name="email"
-                      className={`text-4sm text-gray-900 w-full h-[50px] p-4 rounded-lg border-2 border-gray-300 outline-none focus:outline-none focus:border-blue-500 transition-all duration-200 relative z-10 ${emailError ? "border-red-500" : ""
+                      className={`text-4sm text-gray-900 w-full h-[50px] p-4 rounded-lg border-2 border-gray-300 outline-none focus:outline-none focus:border-blue-500 transition-all duration-200 relative z-1 ${emailError ? "border-red-500" : ""
                         }`}
                       placeholder=""
                       value={email}
@@ -296,7 +296,7 @@ function LoginComponent() {
                     <label htmlFor="role">{role ? "" : ""}</label>
                     <select
                       name="role"
-                      className="text-4sm text-gray-900 w-full h-[54px] p-4 rounded-lg border-2 border-gray-300 outline-none focus:outline-none focus:border-blue-500 transition-all duration-200 relative z-10"
+                      className="text-4sm text-gray-900 w-full h-[54px] p-4 rounded-lg border-2 border-gray-300 outline-none focus:outline-none focus:border-blue-500 transition-all duration-200 relative z-1"
                       value={role}
                       onChange={handleRoleChange}
                     >
@@ -365,7 +365,7 @@ function LoginComponent() {
                     <input
                       type="text"
                       name="phone"
-                      className="text-4sm text-gray-900 w-full h-[50px] p-4 rounded-lg border-2 border-gray-300 outline-none focus:outline-none focus:border-blue-500 transition-all duration-200 relative z-10"
+                      className="text-4sm text-gray-900 w-full h-[50px] p-4 rounded-lg border-2 border-gray-300 outline-none focus:outline-none focus:border-blue-500 transition-all duration-200 relative z-1"
                       placeholder=""
                       minlength="10"
                       value={signinname}
