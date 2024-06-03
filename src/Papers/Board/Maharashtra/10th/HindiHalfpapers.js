@@ -1,24 +1,24 @@
 import React from "react";
-import Navbar from "../Components/Navbar";
-import Footer from "../Components/Footer";
+import Navbar from "../../../../Components/Navbar.js";
+import Footer from "../../../../Components/Footer.js";
 import {
   BreadcrumbPages,
-} from "../Components/Breadcrumbs";
-import Joiningoptions from "../Components/Joiningoptions";
-import Exploremore from "../Components/Exploremore";
+} from "../../../../Components/Breadcrumbs.js";
+import Joiningoptions from "../../../../Components/Joiningoptions.js";
+import Exploremore from "../../../../Components/Exploremore.js";
 import { useState, useEffect } from "react";
-import Contentscreen from "../Components/Contentscreen.js";
-import Loader from "../Components/Loader.js";
-import { sleep, topFunction } from "../Global.js";
-import StaticTag from "../Components/StaticTag.js";
-import LoginComponent from "../Components/LoginComponent.js";
+import Contentscreen from "../../../../Components/Contentscreen.js";
+import Loader from "../../../../Components/Loader.js";
+import { sleep, topFunction } from "../../../../Global.js";
+import StaticTag from "../../../../Components/StaticTag.js";
+import LoginComponent from "../../../../Components/LoginComponent.js";
 import { Helmet } from 'react-helmet';
 
-function MarathiPapers() {
+function HindiHalfPapers() {
 
   const sel_med = localStorage.getItem('medium') ? localStorage.getItem('medium') : "marathi";
 
-  const pre_API = "https://padhaiplanet.com/api/v1/get-question?subject=marathi&medium=" + sel_med + "&standard=10";
+  const pre_API = "https://padhaiplanet.com/api/v1/get-question?subject=hindi_half&medium=" + sel_med + "&standard=10";
 
   //For fetching data
   const API_hisory_paper = pre_API;
@@ -37,7 +37,7 @@ function MarathiPapers() {
       await sleep(3000);
       setData(data.data);
       //⚠️⚠️⚠️ Do not remove below line!!⚠️⚠️⚠️
-      // localStorage.setItem("data_marathi_" + localStorage.getItem('medium'), JSON.stringify(data));
+      // localStorage.setItem("data_hindi_half_" + localStorage.getItem('medium'), JSON.stringify(data));
       document.getElementById("loader").classList.add("hidden");
       document.getElementById("parent").classList.remove("hidden");
       document.getElementById("explore").classList.remove("hidden");
@@ -54,17 +54,17 @@ function MarathiPapers() {
 
     //⚠️⚠️⚠️ Below commented code can be fixed. Do not remove!!⚠️⚠️⚠️
 
-    // const timestamp = localStorage.getItem('timestamp_marathi_' + localStorage.getItem('medium'));
-    // const data_marathi = localStorage.getItem('data_marathi_' + localStorage.getItem('medium'));
+    // const timestamp = localStorage.getItem('timestamp_hindi_half_' + localStorage.getItem('medium'));
+    // const data_hindi_half = localStorage.getItem('data_hindi_half_' + localStorage.getItem('medium'));
 
-    // if (timestamp && data_marathi) {
+    // if (timestamp && data_hindi_half) {
 
     //   const check = (new Date()).getDate() > JSON.parse(timestamp).expDate;
 
     //   if (check) {
 
-    //     localStorage.removeItem('timestamp_marathi_' + localStorage.getItem('medium'));
-    //     localStorage.removeItem('data_marathi_' + localStorage.getItem('medium'));
+    //     localStorage.removeItem('timestamp_hindi_half_' + localStorage.getItem('medium'));
+    //     localStorage.removeItem('data_hindi_half_' + localStorage.getItem('medium'));
 
     //     //Adding timestamp
     //     const date = new Date().setDate(new Date().getDate() + 6);
@@ -72,14 +72,14 @@ function MarathiPapers() {
     //     // console.log(date);
     //     // console.log(new Date(date));
 
-    //     localStorage.setItem('timestamp_marathi_' + localStorage.getItem('medium'), JSON.stringify({
+    //     localStorage.setItem('timestamp_hindi_half_' + localStorage.getItem('medium'), JSON.stringify({
     //       value: "string",
     //       expDate: date,
     //     }))
 
     //     fetchdata(API_hisory_paper);
-    //   } else if(localStorage.getItem('data_marathi_' + localStorage.getItem('medium'))) {
-    //     const object = JSON.parse(localStorage.getItem('data_marathi_' + localStorage.getItem('medium')))
+    //   } else if(localStorage.getItem('data_hindi_half_' + localStorage.getItem('medium'))) {
+    //     const object = JSON.parse(localStorage.getItem('data_hindi_half_' + localStorage.getItem('medium')))
     //     setData(object.data)
     //     document.getElementById("loader").classList.add("hidden");
     //     document.getElementById("parent").classList.remove("hidden");
@@ -95,7 +95,7 @@ function MarathiPapers() {
     //   // console.log(date);
     //   // console.log(new Date(date));
 
-    //   localStorage.setItem('timestamp_marathi_' + localStorage.getItem('medium'), JSON.stringify({
+    //   localStorage.setItem('timestamp_hindi_half_' + localStorage.getItem('medium'), JSON.stringify({
     //     value: "string",
     //     expDate: date,
     //   }))
@@ -136,11 +136,11 @@ function MarathiPapers() {
     <div className="relative z-0">
       <Helmet>
         <title>Discover English Medium, Marathi Medium, and Sem-English Medium Maharashtra 10th SSC Board History Question Paper for 2018,2019,2020,2022,2023.</title>
-        <link rel="canonical" href="https://padhaiplanet.com/maharashtra-board-marathi-question-papers-10th-ssc" />
-        <meta name="description" content="Prepare for your exam with our Marathi question paper for the Maharashtra 10th SSC board. Prepare with the best resources and boost your chances of success in Maharashtra 10th SSC boards by practicing the previous year's question papers for 2018,2019,2020,2022,2023." />
-        <meta name="keywords" content="10th SSC Maharashtra board question papers, Last 5 years question papers, Class 10 th Maharashtra board Marathi question paper and Solutions., Question paper pdf., 10th Standard Board exam., Maharashtra Board questions paper all classes., Maharashtra Board Question and Solutions." />
+        <link rel="canonical" href="https://padhaiplanet.com/maharashtra-board-hindi-half-question-papers-10th-ssc" />
+        <meta name="description" content="Prepare for your exam with our Hindi Half question paper for the Maharashtra 10th SSC board. Prepare with the best resources and boost your chances of success in Maharashtra 10th SSC boards by practicing the previous year's question papers for 2018,2019,2020,2022,2023." />
+        <meta name="keywords" content="10th SSC Maharashtra board question papers, Last 5 years question papers, Class 10 th Maharashtra board Hindi Half question paper and Solutions., Question paper pdf., 10th Standard Board exam., Maharashtra Board questions paper all classes., Maharashtra Board Question and Solutions." />
       </Helmet>
-      
+
       <div>
         <div className="sticky flex top-0 z-10">
           <Navbar />
@@ -149,7 +149,7 @@ function MarathiPapers() {
           <StaticTag />
         </div>
         <div className="lg:px-8 md:px-6 sm:mx-4">
-          <BreadcrumbPages sub={"Marathi"} />
+          <BreadcrumbPages sub={"Hindi(Half)"} />
         </div>
         <div id="parent" className="relative">
           <div id="go" className=" top-0 w-full mt-[50px]">
@@ -157,7 +157,7 @@ function MarathiPapers() {
             <div className="pb-[5%]">
               {/* <h1 className="xl:ml-[25%] lg:ml-[80%] md:ml-[25%] ml-[30%] xl:mb-[0%] lg:mb-[0%] md:mb-[0%] mb-[50%] text-center text-3xl font-bold text-white"> */}
               <h1 className="text-center xl:text-3xl lg:text-3xl md:text-3xl sm:text-2xl text-2xl font-bold text-white">
-                Marathi
+                Hindi (Half)
               </h1>
               {/* <div className="w-[100%] xl:ml-[0%] lg:ml-[0%] md:ml-[25%] ml-[0%]"> */}
               <div className="w-full items-center">
@@ -226,7 +226,7 @@ function MarathiPapers() {
           <Joiningoptions />
         </div>
         <div id="explore" className="hidden">
-          <Exploremore sub_name={"marathi"} />
+          <Exploremore sub_name={"hindi_half"} />
         </div>
         <div id="footer" className="hidden">
           <Footer />
@@ -240,4 +240,4 @@ function MarathiPapers() {
   );
 }
 
-export default MarathiPapers;
+export default HindiHalfPapers;

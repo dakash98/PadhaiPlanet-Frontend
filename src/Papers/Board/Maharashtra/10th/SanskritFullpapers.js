@@ -1,17 +1,17 @@
 import React from "react";
-import Navbar from "../Components/Navbar";
-import Footer from "../Components/Footer";
+import Navbar from "../../../../Components/Navbar.js";
+import Footer from "../../../../Components/Footer.js";
 import {
   BreadcrumbPages,
-} from "../Components/Breadcrumbs";
-import Joiningoptions from "../Components/Joiningoptions";
-import Exploremore from "../Components/Exploremore";
+} from "../../../../Components/Breadcrumbs.js";
+import Joiningoptions from "../../../../Components/Joiningoptions.js";
+import Exploremore from "../../../../Components/Exploremore.js";
 import { useState, useEffect } from "react";
-import Contentscreen from "../Components/Contentscreen.js";
-import Loader from "../Components/Loader.js";
-import { sleep, topFunction } from "../Global.js";
-import StaticTag from "../Components/StaticTag.js";
-import LoginComponent from "../Components/LoginComponent.js";
+import Contentscreen from "../../../../Components/Contentscreen.js";
+import Loader from "../../../../Components/Loader.js";
+import { sleep, topFunction } from "../../../../Global.js";
+import StaticTag from "../../../../Components/StaticTag.js";
+import LoginComponent from "../../../../Components/LoginComponent.js";
 import { Helmet } from 'react-helmet';
 
 function SanskritFullPapers() {
